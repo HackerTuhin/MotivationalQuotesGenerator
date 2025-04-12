@@ -31,26 +31,24 @@ Make sure you have Python 3.8+ installed.
 - streamlit run Quotes.py
 
 
-SCREENSHOT :
+## SCREENSHOT :
 ![image](https://github.com/user-attachments/assets/93422617-f410-4538-ab72-390c2789935c)
 ![image](https://github.com/user-attachments/assets/87d51018-bb0c-4501-9d7e-e63c2496dbe0)
 
 
 
-💡 Example Use Cases
+## 💡 Example Use Cases
 
-Daily inspiration generator
-Social media content creation
-Mental health motivation
-Emotional and theme-based story starters
+- Daily inspiration generator
+- Social media content creation
+- Mental health motivation
+- Emotional and theme-based story starters
 
 
-🙌 Acknowledgements
+## 🙌 Acknowledgements
 
-Thanks to [Microsoft AutoGen](https://microsoft.github.io/autogen/stable/)
-
-Powered by [OpenAI](https://openrouter.ai/)
-
-Built using [Streamlit](https://streamlit.io/)
+- Thanks to [Microsoft AutoGen](https://microsoft.github.io/autogen/stable/)
+- Powered by [OpenAI](https://openrouter.ai/)
+- Built using [Streamlit](https://streamlit.io/)
 
 
