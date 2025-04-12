@@ -23,11 +23,11 @@ Welcome to the **Motivational Quote Generator** — an AI-powered app built with
 - AutoGen – for conversational agents
 - OpenAI LLM (via config) – to generate prompts and quotes
 
----Install dependencies
+## Install dependencies
 Make sure you have Python 3.8+ installed.
 - pip install -r requirements.txt
 
----Run the app
+## Run the app
 - streamlit run Quotes.py
 
 
