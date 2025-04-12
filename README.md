@@ -25,10 +25,10 @@ Welcome to the **Motivational Quote Generator** — an AI-powered app built with
 
 ---Install dependencies
 Make sure you have Python 3.8+ installed.
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
 ---Run the app
-streamlit run Quotes.py
+- streamlit run Quotes.py
 
 
 SCREENSHOT :
