@@ -48,10 +48,10 @@ Emotional and theme-based story starters
 
 🙌 Acknowledgements
 
-Thanks to Microsoft AutoGen
+Thanks to [Microsoft AutoGen](https://microsoft.github.io/autogen/stable/)
 
-Powered by OpenAI
+Powered by [OpenAI](https://openrouter.ai/)
 
-Built using Streamlit
+Built using [Streamlit](https://streamlit.io/)
 
 
