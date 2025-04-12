@@ -26,6 +26,32 @@ Welcome to the **Motivational Quote Generator** — an AI-powered app built with
 ---Install dependencies
 
 Make sure you have Python 3.8+ installed.
+
 pip install -r requirements.txt
+
+SCREENSHOT :
+![image](https://github.com/user-attachments/assets/93422617-f410-4538-ab72-390c2789935c)
+![image](https://github.com/user-attachments/assets/87d51018-bb0c-4501-9d7e-e63c2496dbe0)
+
+
+
+💡 Example Use Cases
+
+Daily inspiration generator
+
+Social media content creation
+
+Mental health motivation
+
+Emotional and theme-based story starters
+
+
+🙌 Acknowledgements
+
+Thanks to Microsoft AutoGen
+
+Powered by OpenAI
+
+Built using Streamlit
 
 
