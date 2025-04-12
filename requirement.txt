@@ -6,3 +6,6 @@ openai>=1.12.0
 autogen @git+https://github.com/microsoft/autogen.git
 python-dotenv>=1.0.1
 tiktoken>=0.5.1
+streamlit 
+requests 
+pillow
