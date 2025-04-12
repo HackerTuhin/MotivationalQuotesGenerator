@@ -24,10 +24,12 @@ Welcome to the **Motivational Quote Generator** — an AI-powered app built with
 - OpenAI LLM (via config) – to generate prompts and quotes
 
 ---Install dependencies
-
 Make sure you have Python 3.8+ installed.
-
 pip install -r requirements.txt
+
+---Run the app
+streamlit run Quotes.py
+
 
 SCREENSHOT :
 ![image](https://github.com/user-attachments/assets/93422617-f410-4538-ab72-390c2789935c)
@@ -38,11 +40,8 @@ SCREENSHOT :
 💡 Example Use Cases
 
 Daily inspiration generator
-
 Social media content creation
-
 Mental health motivation
-
 Emotional and theme-based story starters
 
 
