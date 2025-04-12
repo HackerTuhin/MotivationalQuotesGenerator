@@ -1,0 +1,8 @@
+autogen-agentchat[bedrock]
+pyautogen
+python-dotenv
+streamlit>=1.32.0
+openai>=1.12.0
+autogen @git+https://github.com/microsoft/autogen.git
+python-dotenv>=1.0.1
+tiktoken>=0.5.1
