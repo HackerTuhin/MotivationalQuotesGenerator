@@ -1,7 +1,7 @@
 config = {
-    "model": "deepseek/deepseek-chat-v3-0324:free",
+    "model": "moonshotai/kimi-vl-a3b-thinking:free",
     "base_url": "https://openrouter.ai/api/v1",
-    "api_key": "YOUR_API_KEY",
+    "api_key": "sk-or-v1-e413e581da914620a4212793395aa15b0c699e11f97ec75a6f5173b54a1c",
 }
 
-#"model": "qwen/qwen2.5-vl-3b-instruct:free",
+#"model": "qwen/qwen2.5-vl-3b-instruct:ec:free:51",
