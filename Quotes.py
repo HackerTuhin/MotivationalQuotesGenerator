@@ -1,79 +1,70 @@
 import streamlit as st
-from autogen import ConversableAgent
-import shutil
+import requests
 import os
-from config import config
+from dotenv import load_dotenv
 
-def delete_cache_folder():
-    cache_path = ".cache"
+load_dotenv()
+
+def call_openrouter(messages, system_prompt="", max_tokens=2000):
+    api_key = os.getenv("OPENROUTER_API_KEY")
+    if not api_key or not api_key.strip():
+        return "💌 Please set your OPENROUTER_API_KEY in the .env file!"
+
+    headers = {
+        "Authorization": f"Bearer {api_key.strip()}",
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://motivational-quotes.streamlit.app",
+        "X-Title": "Motivational Quotes Generator"
+    }
+    payload = {
+        "model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+        "messages": [{"role": "system", "content": system_prompt}] + messages if system_prompt else messages,
+        "max_tokens": max_tokens,
+        "temperature": 0.9
+    }
+
     try:
-        if os.path.exists(cache_path):
-            shutil.rmtree(cache_path)
+        resp = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers=headers,
+            json=payload,
+            timeout=60
+        )
+        print("API Response status:", resp.status_code)
+        data = resp.json()
+        print("API Response:", data)
+        if "choices" in data:
+            msg = data["choices"][0]["message"]
+            content = msg.get("content") or ""
+            return content.strip() or "Something went wrong — please try again!"
+        elif "error" in data:
+            return f"💔 Error: {data['error'].get('message', 'Something went wrong. Check your API key.')}"
+        return "Something went wrong — please try again!"
+    except requests.exceptions.Timeout:
+        return "💌 The stars are busy... please try again in a moment!"
     except Exception as e:
-        st.error(f"Error deleting cache folder: {e}")
+        print("Exception:", str(e))
+        return f"🌸 Oops! ({str(e)}) — try again?"
 
-# OpenAI Agent Config
-
-# Initialize AI Agents with error handling
-try:
-    prompt_agent = ConversableAgent(
-        name="PromptGenerator",
-        llm_config=config,
-        code_execution_config=False,
-        human_input_mode="NEVER",
-        description="Generates a well-structured prompt based on selected quote types.",
-    )
-    quote_agent = ConversableAgent(
-        name="QuoteGenerator",
-        llm_config=config,
-        code_execution_config=False,
-        human_input_mode="NEVER",
-        description="Generates motivational quotes based on the given prompt.",
-    )
-except Exception as e:
-    st.error(f"Error initializing AI agents: {e}")
-
-# Function to create messages for the Prompt Generator Agent
 def generate_prompt(quote_types):
-    try:
-        quote_types_str = ", ".join(quote_types)
-        pmt = f"Generate an emotional creative prompt to generate a motivational quote about {quote_types_str}. Give me only the prompt."
-        message = [{"role": "user", "content": [{"type": "text", "text": pmt}]}]
-        response = prompt_agent.generate_reply(messages=message)
-        if not response:
-            raise ValueError("Empty response from prompt agent.")
-        return response
-    except Exception as e:
-        st.error(f"Error generating prompt: {e}")
-        return None
+    quote_types_str = ", ".join(quote_types)
+    pmt = f"Generate an emotional creative prompt to generate a motivational quote about {quote_types_str}. Give me only the prompt."
+    messages = [{"role": "user", "content": pmt}]
+    return call_openrouter(messages)
 
-# Function to generate quotes
 def generate_quotes(prompt):
-    try:
-        if not prompt:
-            raise ValueError("Prompt is empty.")
-        
-        pmt = f'''You are an intelligent Quote generator. You can generate quote in English based on the given prompt.
-        Also, you will give me a real-life example in easy words that will comply with the generated quotes. Below is the prompt.
-        Prompt = {prompt}'''
-        
-        message = [{"role": "user", "content": [{"type": "text", "text": pmt}]}]
-        response = quote_agent.generate_reply(messages=message)
-        if not response:
-            raise ValueError("Empty response from quote agent.")
-        return response
-    except Exception as e:
-        st.error(f"Error generating quotes: {e}")
-        return None
+    pmt = f'''You are an intelligent Quote generator. You can generate quote in English based on the given prompt.
+    Also, you will give me a real-life example in easy words that will comply with the generated quotes. Below is the prompt.
+    Prompt = {prompt}'''
+    messages = [{"role": "user", "content": pmt}]
+    return call_openrouter(messages, max_tokens=1000)
 
-# Streamlit UI
 def main():
     st.title("🌟 Motivational Quotes Generator")
     
     try:
         search_query = st.text_input("🔍 Search Quote Type:", "")
         
-        # Define some sample quote options
         quote_options = {
             "Life": "🌿", "Love": "❤️", "Sorrow": "😢", "Pain": "💔", "Trust": "🤝", "Happiness": "😊",
             "Success": "🏆", "Friendship": "👬", "Courage": "🦁", "Hope": "🌟", "Wisdom": "🧠",
@@ -121,8 +112,7 @@ def main():
             "Broken Promises": "📜💔", "Manipulated Emotions": "🔄😢",
             "Abuse": "🚫", "Tears in Silence": "🤐😭", "Lonely Nights": "🌃💔",
             "Fear of Failure": "⚠️", "Hiding Pain": "😶💔"
-}
-
+        }
         
         filtered_quote_options = {key: value for key, value in quote_options.items() if search_query.lower() in key.lower()}
         
@@ -161,4 +151,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    delete_cache_folder()

@@ -1,18 +1,16 @@
-
 # 🌟 Motivational Quote Generator
 
-Welcome to the **Motivational Quote Generator** — an AI-powered app built with **Streamlit** and **AutoGen** that delivers inspirational quotes tailored to your emotions or situations. Whether you're feeling down, striving for success, or seeking creative motivation, this tool has got you covered.
+Welcome to the **Motivational Quote Generator** — an AI-powered app built with **Streamlit** that delivers inspirational quotes tailored to your emotions or situations. Whether you're feeling down, striving for success, or seeking creative motivation, this tool has got you covered.
 
 ---
 
 ## 🚀 Features
 
 - 🔍 Search and select from **100+ quote topics**
-- 🤖 AI-generated motivational quotes using **AutoGen's ConversableAgent**
+- 🤖 AI-generated motivational quotes using **OpenRouter API**
 - 📖 Real-life examples for every quote to inspire action
 - 🧠 Intelligent prompt and response generation
 - 💬 Beautiful and intuitive **Streamlit UI**
-- ♻️ Cache deletion mechanism to ensure clean sessions
 
 ---
 
@@ -20,22 +18,25 @@ Welcome to the **Motivational Quote Generator** — an AI-powered app built with
 
 - Python
 - Streamlit – for the user interface
-- AutoGen – for conversational agents
-- OpenAI LLM (via config) – to generate prompts and quotes
+- OpenRouter API – for AI model access
+- Requests – for API calls
 
-## Install dependencies
-Make sure you have Python 3.8+ installed.
-- pip install -r requirements.txt
+## Installation
+
+1. Make sure you have Python 3.8+ installed
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+3. Create a `.env` file with your OpenRouter API key:
+```env
+OPENROUTER_API_KEY=sk-or-v1-...
+```
 
 ## Run the app
-- streamlit run Quotes.py
-
-
-## SCREENSHOT :
-![image](https://github.com/user-attachments/assets/93422617-f410-4538-ab72-390c2789935c)
-![image](https://github.com/user-attachments/assets/87d51018-bb0c-4501-9d7e-e63c2496dbe0)
-
-
+```bash
+streamlit run Quotes.py
+```
 
 ## 💡 Example Use Cases
 
@@ -44,11 +45,7 @@ Make sure you have Python 3.8+ installed.
 - Mental health motivation
 - Emotional and theme-based story starters
 
-
 ## 🙌 Acknowledgements
 
-- Thanks to [Microsoft AutoGen](https://microsoft.github.io/autogen/stable/)
-- Powered by [OpenAI](https://openrouter.ai/)
+- Powered by [OpenRouter](https://openrouter.ai/)
 - Built using [Streamlit](https://streamlit.io/)
-
-
