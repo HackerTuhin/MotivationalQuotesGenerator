@@ -2,6 +2,8 @@
 
 Welcome to the **Motivational Quote Generator** — an AI-powered app built with **Streamlit** that delivers inspirational quotes tailored to your emotions or situations. Whether you're feeling down, striving for success, or seeking creative motivation, this tool has got you covered.
 
+**Live App**: https://motivationalquotesgenerator.streamlit.app/
+
 ---
 
 ## 🚀 Features
@@ -14,7 +16,15 @@ Welcome to the **Motivational Quote Generator** — an AI-powered app built with
 
 ---
 
-## 🛠️ Technologies Used
+## � Deployment
+
+This app is deployed on Streamlit Cloud! 🎉
+
+**Live Link**: https://motivationalquotesgenerator.streamlit.app/
+
+---
+
+## �🛠️ Technologies Used
 
 - Python
 - Streamlit – for the user interface
